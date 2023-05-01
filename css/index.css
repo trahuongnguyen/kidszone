@@ -1,0 +1,87 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-sizing: border-box;
+}
+.margin_header{
+    text-align: center;
+    margin: auto;
+    padding: auto;
+}
+.css_button{
+    border: none;
+    background: none;
+}
+.bg_header{
+    background: #f05f62;
+}
+.card_pro{
+    width: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+.bg_footer{
+    background-color: rgb(172, 176, 176);
+}
+button, input{
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+.li_nav{
+    border-left: 3px dashed gray;
+    width: 120px;
+    height: 50px;
+}
+.footer--decor {
+    height: 20px;
+    overflow: hidden;
+    position: relative;
+    background: white;
+}
+.footer--decor:before {
+    position: absolute;
+    content: "";
+    background: rgb(172, 176, 176);
+    height: 20px;
+    width: 200px;
+    top: 0;
+    left: -5px;
+    transform: skewX(30deg);
+}
+.footer--decor:after {
+    position: absolute;
+    content: "";
+    background: rgb(172, 176, 176);
+    height: 20px;
+    width: 200px;
+    top: 0;
+    right: -5px;
+    transform: skewX(-30deg);
+}
+.dropdown{
+    position: relative;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    z-index: 1;
+    text-align: left;
+    background-color: rgb(164, 156, 147);
+    width: 200px;
+}
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+.nav-link:hover{
+    color: red;
+}
