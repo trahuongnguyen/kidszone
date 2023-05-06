@@ -1,9 +1,7 @@
 <?php
-    require('./config.php');
-
     //connect database
     function connect(){
-        $conn = new mysqli(HOST, USERNAME, PASSWORD, DATABASE);
+        $conn = new mysqli('localhost', 'root', '', 'eproject');
         if($conn->connect_error){
             die ("Can not connect your database". $conn->connect_error);
         }
