@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  
+.body  {
+    text-align: center;
+    background-image: url(../img/logo/bg3.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+
+.h1{
+    margin: auto;
+    text-align: center;
+    color: #ea2858;
+    text-shadow: 2px 2px;
+    padding: 30px;
+  }
+
+.sub-main-w3 {
+    width: 35%;
+  }
+
+.center-container {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    padding-top: 5%;
+}
+
+.sub-main-w3 input[type="email"], .sub-main-w3 input[type="password"], .sub-main-w3 input[type="text"] {
+    outline: none;
+    font-size: .9em;
+    padding: 1em 3em 1em 1em;
+    border: 1px solid #f05f62;
+    margin-bottom: 0.3em;
+    background: rgba(255, 255, 255, 0.85);
+    width: 82%;
+    color: #f05f62;
+    border-radius: 30px;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 1px;
+}
+
+.sub-main-w3 {
+    margin: auto;
+    text-align: center;
+}
+
+.right-w3l {
+  margin-top: 2em;
+}
+
+.sub-w3l {
+  margin-top: 1em;
+}
+
+.right-w3l input[type="submit"] {
+  color: white;
+  background: #ea2858;
+  border: none;
+  padding: 0.7em 0;
+  outline: none;
+  width: 38%;
+  font-size: 1em;
+  cursor: pointer;
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
+  border-radius: 30px;
+}
+
+.pom-agile {
+  position: relative;
+  padding: 10px;
+}
+
+::placeholder{
+  color:red;
+  opacity: 0.9;
+}
+
+@media only screen and (max-width:800px) {
+  .main {
+    width: 80%;
+    padding: 0;
+  }
+  .right {
+    width: 100%;
+  }
+}
+@media only screen and (max-width:500px) {
+  .menu, .main, .right {
+    width: 100%;
+  }
+}
