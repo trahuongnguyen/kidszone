@@ -1,7 +1,7 @@
 <?php
     //connect database
     function connect(){
-        $conn = new mysqli('localhost', 'root', '', 'eproject');
+        $conn = new mysqli('localhost', 'root', 'ht010203', 'e_project_1');
         if($conn->connect_error){
             die ("Can not connect your database". $conn->connect_error);
         }
@@ -14,28 +14,71 @@
         $conn->close();
     }
 
-    //select table
-    function selectTable($tableName_input){
+    //select categories
+    function selectCat(){
         $conn = connect();
-        $sql = "SELECT * FROM ? WHERE deleted = 0";
+        $sql = "SELECT * FROM categories WHERE deleted = 0";
+        $result = $conn->query($sql);
+        $conn->close();
+        return $result;
+    }
+
+    //select detail
+    function selectDetail(){
+        $conn = connect();
+        $sql = "SELECT * FROM details WHERE deleted = 0";
+        $result = $conn->query($sql);
+        $conn->close();
+        return $result;
+    }
+
+    //select contact
+    function selectContact(){
+        $conn = connect();
+        $sql = "SELECT * FROM contact WHERE deleted = 0";
+        $result = $conn->query($sql);
+        $conn->close();
+        return $result;
+    }
+
+    //select user
+    function selectUser(){
+        $conn = connect();
+        $sql = "SELECT * FROM users WHERE deleted = 0";
+        $result = $conn->query($sql);
+        $conn->close();
+        return $result;
+    }
+
+    //select partner
+    function selectPartner(){
+        $conn = connect();
+        $sql = "SELECT * FROM partner WHERE deleted = 0";
+        $result = $conn->query($sql);
+        $conn->close();
+        return $result;
+    }
+
+    //select detail by id
+    function selectDetailByid($id_input){
+        $conn = connect();
+        $sql = "SELECT * FROM details where category_id = ? and deleted = 0";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $tableName);
-        $tableName = $tableName_input;
+        $stmt->bind_param("i", $id);
+        $id = $id_input;
         $stmt->execute();
         $result = $stmt->get_result();
         closeconnect($stmt, $conn);
         return $result;
     }
 
-    //select table by id
-    function selectbyid($tableName_input, $colidName_input, $id_input){
+    //select user by name
+    function selectUserByName($name_input){
         $conn = connect();
-        $sql = "SELECT * FROM ? where ? = ? and deleted = 1";
+        $sql = "SELECT * FROM users where username = ? and deleted = 0";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssi", $tableName, $colidName, $id);
-        $tableName = $tableName_input;
-        $colName = $colidName_input;
-        $id = $id_input;
+        $stmt->bind_param("s", $name);
+        $name = $name_input;
         $stmt->execute();
         $result = $stmt->get_result();
         closeconnect($stmt, $conn);
@@ -182,7 +225,7 @@
         $conn = connect();
         $sql = "UPDATE users SET username = ?, password = ?, email = ?, address = ?, update_at = CURRENT_TIMESTAMP WHERE id = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssss", $name, $pass, $email, $address, $id);
+        $stmt->bind_param("ssssi", $name, $pass, $email, $address, $id);
         $name = $name_input;
         $pass = $pass_input;
         $email = $email_input;
@@ -193,10 +236,66 @@
     }
 
     //delete
-    function delete($tableName_input, $id_input){
+    function deleteUser($id_input){
         $conn = connect();
-        $sql = "UPDATE ? SET update_at = CURRENT_TIMESTAMP, deleted = 1 WHERE id = ?";
-        $conn->query($sql);
-        $conn->close();
+        $sql = "UPDATE users SET update_at = CURRENT_TIMESTAMP, deleted = 1 WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $id = $id_input;
+        $stmt->execute();
+        closeconnect($stmt, $conn);
     }
+
+    //check user form login
+    function check_user($username_input){     
+        $conn = connect();
+        $sql = "SELECT username, password, role_id FROM users WHERE username = ? and deleted = 0";
+        $stmt = $conn -> prepare($sql);
+        $stmt -> bind_param("s",$username);
+        $username = $username_input;
+        $stmt -> execute();
+        $result = $stmt -> get_result();
+        return $result;
+        closeconnect($stmt,$conn);
+    }
+
+    //check user form register
+    function check_username($username_input){     
+        $conn = connect();
+        $flag = 0;
+        $sql = "SELECT username FROM users WHERE username = ? and deleted = 0";
+        $stmt = $conn -> prepare($sql);
+        $stmt -> bind_param("s",$username);
+        $stmt -> execute();
+        $username = $username_input;
+        $result = $stmt -> get_result();
+        if ($result -> num_rows > 0){
+            $flag = 1;
+        }
+        return $flag;
+        closeconnect($stmt,$conn);
+    }
+    function check_email($email_input){     
+        $conn = connect();
+        $flag = 0;
+        $sql = "SELECT email FROM users WHERE email = ?  and deleted = 0";
+        $stmt = $conn -> prepare($sql);
+        $stmt -> bind_param("s",$email);
+        $email = $email_input;
+        $stmt -> execute();
+        $result = $stmt -> get_result();
+        if ($result -> num_rows > 0){
+            $flag = 1;
+        }
+        return $flag;
+        closeconnect($stmt,$conn);
+    }
+    
+    //validate email
+    function is_email($str) {
+        return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? FALSE : TRUE;
+    }
+
+    //start session
+    session_start();
 ?>
