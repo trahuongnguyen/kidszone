@@ -1,114 +1,71 @@
 <?php
-    include("../inc/header.php");
-    include("../inc/slider.php");
+    include_once('../inc/header.php');
+    // require_once("../model/dbhelper.php");
+    $resultPartner = selectPartner();
+    $resultCate = selectCat();
 ?>
-    <main>
-        <div class="container mt-4">
-            <div class="container text-center">
-                <h1>Character</h1>
+    <div class="container-fluid">
+        <div class="slider">
+            <div class="title">
+                Kids Zone
             </div>
-            <div class="row mt-4">
-                <div class="col-md-3 col-sm-6 col-12 container-fluid">
-                    <img src="../img/character/a.jpg" alt="" width="100%;">
-                    <br>
-                    <br>
-                    <h5 class="container text-center">DỊCH VỤ THẤU HIỂU</h5>
-                    <span>Các dịch vụ tiệc và hội nghị trọn gói theo chuẩn mực cao cấp, chỉn chu cùng mức chi phí hợp lý giúp giảm tải gánh nặng tổ chức, cho phép bạn tập trung hơn ở việc trải nghiệm và tận hưởng</span>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12 container-fluid">
-                    <img src="../img/character/a.jpg" alt="" width="100%;">
-                    <br>
-                    <br>
-                    <h5 class="container text-center">DỊCH VỤ THẤU HIỂU</h5>
-                    <span>Các dịch vụ tiệc và hội nghị trọn gói theo chuẩn mực cao cấp, chỉn chu cùng mức chi phí hợp lý giúp giảm tải gánh nặng tổ chức, cho phép bạn tập trung hơn ở việc trải nghiệm và tận hưởng</span>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12 container-fluid">
-                    <img src="../img/character/a.jpg" alt="" width="100%;">
-                    <br>
-                    <br>
-                    <h5 class="container text-center">DỊCH VỤ THẤU HIỂU</h5>
-                    <span>Các dịch vụ tiệc và hội nghị trọn gói theo chuẩn mực cao cấp, chỉn chu cùng mức chi phí hợp lý giúp giảm tải gánh nặng tổ chức, cho phép bạn tập trung hơn ở việc trải nghiệm và tận hưởng</span>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12 container-fluid">
-                    <img src="../img/character/a.jpg" alt="" width="100%;">
-                    <br>
-                    <br>
-                    <h5 class="container text-center">DỊCH VỤ THẤU HIỂU</h5>
-                    <span>Các dịch vụ tiệc và hội nghị trọn gói theo chuẩn mực cao cấp, chỉn chu cùng mức chi phí hợp lý giúp giảm tải gánh nặng tổ chức, cho phép bạn tập trung hơn ở việc trải nghiệm và tận hưởng</span>
-                </div>
-            </div>  
-        </div>
-        <div class="container mt-4">
-            <div class="container text-center">
-                <h1>Numberic</h1>
+            <div class="images">
+                <?php
+                    $dataCate = array();
+                    if($resultCate->num_rows>0){
+                        $i = 1;
+                        while($rowCate = $resultCate->fetch_assoc()){
+                            echo 
+                            "<div class='item' style='--i: {$i};'>
+                                <img src='../img/logo/logo/{$rowCate['image']}'>
+                            </div>";
+                            $dataCate['name'][] = $rowCate['name'];
+                            $dataCate['desription'][] = $rowCate['description'];
+                            $i++;
+                            if($i>6){
+                                break;
+                            }
+                        }
+                    }
+                ?>
             </div>
-            <div class="row mt-4">
-                <div class="col-md-3 col-sm-6 col-12 container-fluid">
-                    <img src="../img/character/a.jpg" alt="" width="100%;">
-                    <br>
-                    <br>
-                    <h5 class="container text-center">DỊCH VỤ THẤU HIỂU</h5>
-                    <span>Các dịch vụ tiệc và hội nghị trọn gói theo chuẩn mực cao cấp, chỉn chu cùng mức chi phí hợp lý giúp giảm tải gánh nặng tổ chức, cho phép bạn tập trung hơn ở việc trải nghiệm và tận hưởng</span>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12 container-fluid">
-                    <img src="../img/character/a.jpg" alt="" width="100%;">
-                    <br>
-                    <br>
-                    <h5 class="container text-center">DỊCH VỤ THẤU HIỂU</h5>
-                    <span>Các dịch vụ tiệc và hội nghị trọn gói theo chuẩn mực cao cấp, chỉn chu cùng mức chi phí hợp lý giúp giảm tải gánh nặng tổ chức, cho phép bạn tập trung hơn ở việc trải nghiệm và tận hưởng</span>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12 container-fluid">
-                    <img src="../img/character/a.jpg" alt="" width="100%;">
-                    <br>
-                    <br>
-                    <h5 class="container text-center">DỊCH VỤ THẤU HIỂU</h5>
-                    <span>Các dịch vụ tiệc và hội nghị trọn gói theo chuẩn mực cao cấp, chỉn chu cùng mức chi phí hợp lý giúp giảm tải gánh nặng tổ chức, cho phép bạn tập trung hơn ở việc trải nghiệm và tận hưởng</span>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12 container-fluid">
-                    <img src="../img/character/a.jpg" alt="" width="100%;">
-                    <br>
-                    <br>
-                    <h5 class="container text-center">DỊCH VỤ THẤU HIỂU</h5>
-                    <span>Các dịch vụ tiệc và hội nghị trọn gói theo chuẩn mực cao cấp, chỉn chu cùng mức chi phí hợp lý giúp giảm tải gánh nặng tổ chức, cho phép bạn tập trung hơn ở việc trải nghiệm và tận hưởng</span>
-                </div>
-            </div>  
-        </div>
-        <div class="container mt-4">
-            <div class="container text-center">
-                <h1>Animals</h1>
+            <div class="content">
+                <?php
+                    echo 
+                        "<div class='item active'>
+                            <h1>{$dataCate['name'][0]}</h1>
+                            <div class='des'>{$dataCate['desription'][0]}</div>
+                        </div>";
+                    for($j = 1; $j<6; $j++){
+                        echo 
+                        "<div class='item'>
+                            <h1>{$dataCate['name'][$j]}</h1>
+                            <div class='des'>{$dataCate['desription'][$j]}</div>
+                        </div>";
+                    }
+                ?>
             </div>
-            <div class="row mt-4">
-                <div class="col-md-3 col-sm-6 col-12 container-fluid">
-                    <img src="../img/character/a.jpg" alt="" width="100%;">
-                    <br>
-                    <br>
-                    <h5 class="container text-center">DỊCH VỤ THẤU HIỂU</h5>
-                    <span>Các dịch vụ tiệc và hội nghị trọn gói theo chuẩn mực cao cấp, chỉn chu cùng mức chi phí hợp lý giúp giảm tải gánh nặng tổ chức, cho phép bạn tập trung hơn ở việc trải nghiệm và tận hưởng</span>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12 container-fluid">
-                    <img src="../img/character/a.jpg" alt="" width="100%;">
-                    <br>
-                    <br>
-                    <h5 class="container text-center">DỊCH VỤ THẤU HIỂU</h5>
-                    <span>Các dịch vụ tiệc và hội nghị trọn gói theo chuẩn mực cao cấp, chỉn chu cùng mức chi phí hợp lý giúp giảm tải gánh nặng tổ chức, cho phép bạn tập trung hơn ở việc trải nghiệm và tận hưởng</span>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12 container-fluid">
-                    <img src="../img/character/a.jpg" alt="" width="100%;">
-                    <br>
-                    <br>
-                    <h5 class="container text-center">DỊCH VỤ THẤU HIỂU</h5>
-                    <span>Các dịch vụ tiệc và hội nghị trọn gói theo chuẩn mực cao cấp, chỉn chu cùng mức chi phí hợp lý giúp giảm tải gánh nặng tổ chức, cho phép bạn tập trung hơn ở việc trải nghiệm và tận hưởng</span>
-                </div>
-                <div class="col-md-3 col-sm-6 col-12 container-fluid">
-                    <img src="../img/character/a.jpg" alt="" width="100%;">
-                    <br>
-                    <br>
-                    <h5 class="container text-center">DỊCH VỤ THẤU HIỂU</h5>
-                    <span>Các dịch vụ tiệc và hội nghị trọn gói theo chuẩn mực cao cấp, chỉn chu cùng mức chi phí hợp lý giúp giảm tải gánh nặng tổ chức, cho phép bạn tập trung hơn ở việc trải nghiệm và tận hưởng</span>
-                </div>
-            </div>  
+            <button id="prev"><</button>
+            <button id="next">></button>
         </div>
-    </main>
-    <?php
-        include("../inc/footer.php");
-    ?>
+    </div>
+    <div class="container text-center">
+        <h2 class="violet">Partner</h2>
+        <p>List of our partners</p>
+        <img src="img/logo/logopartner.png" alt="">
+        <div class="container-fluid mt-4 mb-4">
+            <div class="row">
+                <?php
+                    if($resultPartner->num_rows>0){
+                        while($rowPartner = $resultPartner->fetch_assoc()){
+                            echo "<div class='col'><img src='../img/logo/{$rowPartner['image']}' alt=''></div>";
+                        }
+                    }
+                ?>
+            </div>
+        </div>
+    </div>
+<?php
+    include('../inc/footer.php');
+?>
+<script src="../js/index.js"></script>
