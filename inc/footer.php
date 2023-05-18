@@ -72,9 +72,7 @@
             </div>
         </div>
         <div class="container-fluid text-center" style="background-color: #f05f62;">
-            <br>
-            <span class="text-light" style = "margin: auto;">Copyright Kids Zone © 2018. All Rights Reserved.</span>
-            <br>
+            <p class="text-light" style = "margin: auto; padding-top:10px; padding-bottom:10px;">Copyright Kids Zone © 2018. All Rights Reserved.</p>
         </div>
     </footer>
 </body>

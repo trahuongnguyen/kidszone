@@ -17,18 +17,22 @@
                     for($i=0; $i<count($name); $i++){
                         if(($i+1)%5!=0){
                             echo 
-                            "<audio id='{$i}' class='myaudio'>
-                                <source src='../voice/$audio[$i]' type='audio/mpeg'>
-                                Your browser does not support the audio element.
-                            </audio>
-                            <div class='col'><button class='css-button'><img src='../img/{$image[$i]}' alt=''><br><h1 style='font-family: Pacifico, cursive; color: #f05f62; text-shadow: 3px 3px 0px #478860;'>{$name[$i]}</h1></button></div>";
-                        } else {
-                            echo 
-                                "<audio id='{$i}' class='myaudio'>
+                            "<div class='col' onclick='playAudio({$i})'>
+                                <audio id='{$i}' class='myaudio'>
                                     <source src='../voice/$audio[$i]' type='audio/mpeg'>
                                     Your browser does not support the audio element.
                                 </audio>
-                                <div class='col'><button class='css-button'><img src='../img/{$image[$i]}' alt=''><br><h1 style='font-family: Pacifico, cursive; color: #f05f62; text-shadow: 3px 3px 0px #478860;'>{$name[$i]}</h1></button></div>
+                                <button class='css-button'><img src='../img/{$image[$i]}' alt=''><br><h1 style='font-family: Pacifico, cursive; color: #f05f62; text-shadow: 3px 3px 0px #478860;'>{$name[$i]}</h1></button>
+                            </div>";
+                        } else {
+                            echo 
+                                "<div class='col' onclick='playAudio({$i})'>
+                                    <audio id='{$i}' class='myaudio'>
+                                        <source src='../voice/$audio[$i]' type='audio/mpeg'>
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                    <button class='css-button'><img src='../img/{$image[$i]}' alt=''><br><h1 style='font-family: Pacifico, cursive; color: #f05f62; text-shadow: 3px 3px 0px #478860;'>{$name[$i]}</h1></button>
+                                </div>
                             </div>
                             <div class='row'>";
                         }

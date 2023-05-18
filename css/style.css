@@ -314,3 +314,9 @@ ul {
   background-color: #f05f62;
   color: #fff;
 }
+.bg-about{
+  background-color: #f9f8f8;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: justify;
+}

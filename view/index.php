@@ -49,7 +49,11 @@
             <button id="next">></button>
         </div>
     </div>
-    <div class="container text-center">
+    <div class="container-fluid bg-about text-center">
+        <h1 class = "pink">About us</h1>
+        <p class = "container" style = "text-align: justify;"><?php echo (selectContact()->fetch_assoc())['about_us'];?></p>
+    </div>
+    <div class="container text-center mt-3">
         <h2 class="violet">Partner</h2>
         <p>List of our partners</p>
         <img src="img/logo/logopartner.png" alt="">
