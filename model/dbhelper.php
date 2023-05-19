@@ -164,6 +164,20 @@
         closeconnect($stmt, $conn);
     }
 
+    //add Comment
+    function addComment($name_input, $phone_input, $email_input, $comment_input){
+        $conn = connect();
+        $sql = "INSERT INTO comment (full_name, phone_number, email, comment) VALUES (?,?,?,?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssss", $name, $phone, $email, $comment);
+        $name = $name_input;
+        $phone = $phone_input;
+        $email = $email_input;
+        $comment = $comment_input;
+        $stmt->execute();
+        closeconnect($stmt, $conn);
+    }
+
     //update categories
     function editCat($name_input, $id_input){
         $conn = connect();

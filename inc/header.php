@@ -3,6 +3,7 @@
     include_once('../controller/login.php');
     include('../controller/register.php');
     include('../controller/account.php');
+    include('../controller/contact.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

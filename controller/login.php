@@ -1,5 +1,4 @@
 <?php
-    // include_once("../model/dbhelper.php");
     $dataLogin = array();
     $errorLogin = array();
     $flag = 0;

@@ -17,11 +17,11 @@
     <div class="row">
         <div class="col-md-6 col-sm-12 text-center">
             <form action="" method="post">
-                <input class="input-group p-2" type="text" name="" placeholder="Full name">
-                <input class="input-group p-2" type="text" name="" placeholder="Phone number">
-                <input class="input-group p-2" type="text" name="" placeholder="Email">
-                <textarea name="" id="" rows="10" class="input-group p-2" placeholder="Comment" style = "max-height:300px;"></textarea>
-                <input type="submit" class="input-button">
+                <input class="input-group p-2" type="text" name="name" placeholder="Full name" required>
+                <input class="input-group p-2" type="text" name="phone" placeholder="Phone number" pattern="[0]{1}[0-9]{9}" required>
+                <input class="input-group p-2" type="email" name="email" placeholder="Email" required>
+                <textarea name="" rows="10" class="input-group p-2" placeholder="Comment" style = "max-height:300px;" required></textarea>
+                <input type="submit" name = "contact" class="input-button">
             </form>
             <br>
         </div>
