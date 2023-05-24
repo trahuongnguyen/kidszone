@@ -4,6 +4,7 @@
     include('../controller/register.php');
     include('../controller/account.php');
     include('../controller/contact.php');
+    include('../controller/search.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +22,19 @@
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Kids Zone</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
+    <style>
+        .ui-autocomplete {
+            max-height: 200px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        * html .ui-autocomplete {
+            height: 200px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -32,9 +46,17 @@
                     </div>
                     <div class="col-md-7 col-12 margin_header">
                         <div class="input-group" style="width: 70%; margin-left: 10%;">
-                            <input type="text" name = "search" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <input type="text" name = "search" id="search" class="form-control" placeholder="Search" aria-label="Recipient's username" aria-describedby="button-addon2">
                             <button class="btn btn-danger" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
                         </div>
+                        <script type="text/javascript">
+                            $(function() {
+                                const list = <?php echo json_encode($data); ?>;
+                                $("#search").autocomplete({
+                                    source: list,
+                                });
+                            });
+                        </script>
                     </div>
                     <div class="col-md-2 margin_header">
                             <div class="sec-center"> 	
