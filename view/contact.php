@@ -1,6 +1,6 @@
 <?php 
     include_once('../inc/header.php');
-    $resultContact = selectContact();
+    $resultContact = selectAboutUs();
     $dataContact = array();
     if($resultContact->num_rows>0){
         while($rowContact = $resultContact->fetch_assoc()){

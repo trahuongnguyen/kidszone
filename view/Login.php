@@ -9,11 +9,9 @@
                 <div class="sub-main-w3">	
                     <form action="" method="post">
                         <div class="pom-agile">
-                            <!-- <span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span> -->
                             <input placeholder="<?php echo isset($errorLogin['uname']) ? $errorLogin['uname'] : 'Username'?>" name="uname" class="user" type="text">
                         </div>
                         <div class="pom-agile">
-                            <!-- <span class="icon2"><i class="fa fa-unlock" aria-hidden="true"></i></span> -->
                             <input  placeholder="<?php echo isset($errorLogin['pword']) ? $errorLogin['pword'] : 'Password'?>" name="pword" class="pass" type="password">
                         </div>
                         <div class="sub-w3l">

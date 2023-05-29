@@ -33,10 +33,10 @@
                 <?php
                     echo 
                         "<div class='item active'>
-                            <h1>{$dataCate['name'][0]}</h1>
-                            <div class='des'>{$dataCate['desription'][0]}</div>
+                            <h1>{$dataCate['name'][5]}</h1>
+                            <div class='des'>{$dataCate['desription'][5]}</div>
                         </div>";
-                    for($j = 1; $j<6; $j++){
+                    for($j = 4; $j>-1; $j--){
                         echo 
                         "<div class='item'>
                             <h1>{$dataCate['name'][$j]}</h1>
@@ -51,7 +51,7 @@
     </div>
     <div class="container-fluid bg-about text-center">
         <h1 class = "pink">About us</h1>
-        <p class = "container" style = "text-align: justify;"><?php echo (selectContact()->fetch_assoc())['about_us'];?></p>
+        <p class = "container" style = "text-align: justify;"><?php echo (selectAboutUs()->fetch_assoc())['about_us'];?></p>
     </div>
     <div class="container text-center mt-3">
         <h2 class="violet">Partner</h2>

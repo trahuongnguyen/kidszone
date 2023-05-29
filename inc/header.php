@@ -65,11 +65,12 @@
                                 <div class="section-dropdown">
                                     <?php
                                         if(!isset($_SESSION['user'])){
-                                            echo '<a href="../view/login.php" class="a-drop"><p><i class="fa-solid fa-user"></i> Login</p></a>
-                                            <a href="../view/register.php" class="a-drop"><p><i class="fa-solid fa-user-plus"></i> Register</p></a>';
+                                            echo '<a href="../view/login.php" class="a-drop"><p><i class="fa-solid fa-user"></i> Sign In</p></a>
+                                            <a href="../view/register.php" class="a-drop"><p><i class="fa-solid fa-user-plus"></i> Sign Up</p></a>
+                                            <a href="../admin/view/login.php" class="a-drop"><p>You are admin?</p></a>';
                                         } else{
                                             echo '<a href="../view/account.php" class="a-drop"><p><i class="fa-solid fa-user"></i> Account</p></a>
-                                            <a href="../controller/logout.php" class="a-drop"><p><i class="fa-solid fa-right-from-bracket"></i> Logout</p></a>';
+                                            <a href="../controller/logout.php" class="a-drop"><p><i class="fa-solid fa-right-from-bracket"></i> Sign Out</p></a>';
                                         }
                                     ?>
                                     
@@ -111,7 +112,7 @@
                             <img src="../img/logo/h1.png" alt="" width="80%">
                         </li>
                         <li class="menu-item li_nav col">
-                            <a class="nav-link a-h" href="#">Game</a>
+                            <a class="nav-link a-h" href="https://yandex.com/games/category/for_babies?utm_medium=search&utm_source=google&utm_campaign=en-tier3_games_general_category_all_google_search%7C19769577747&utm_content=k50id%7Ckwd-11612891%7Ccid%7C19769577747%7Caid%7C650445722351%7Cgid%7C148308216402%7Cpos%7C%7Csrc%7Cg_%7Cdvc%7Cc%7Creg%7C9074081%7Crin%7C%7C&k50id=148308216402%7Ckwd-11612891&utm_term=game&gclid=Cj0KCQjw98ujBhCgARIsAD7QeAiZ1SlpMJlpmhiP_sA_2kZgRNkfPvD9GrfO6lLsEczQnTxgljAcjsoaAn0OEALw_wcB">Game</a>
                         </li>
                         <li class="menu-item li_nav col">
                             <a class="nav-link a-h" href="contact.php">Contact</a>

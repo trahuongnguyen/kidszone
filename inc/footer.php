@@ -1,13 +1,13 @@
 <?php
-    $resultContact = selectContact();
-    if($resultContact->num_rows>0){
-        while($rowContact = $resultContact->fetch_assoc()){
-            $name = $rowContact['name'];
-            $web = $rowContact['website'];
-            $email = $rowContact['email'];
-            $address = $rowContact['address'];
-            $hotline = $rowContact['hotline'];
-            $intro = $rowContact['about_us'];
+    $resultAboutUs = selectAboutUs();
+    if($resultAboutUs->num_rows>0){
+        while($rowAboutUs = $resultAboutUs->fetch_assoc()){
+            $name = $rowAboutUs['name'];
+            $web = $rowAboutUs['website'];
+            $email = $rowAboutUs['email'];
+            $address = $rowAboutUs['address'];
+            $hotline = $rowAboutUs['hotline'];
+            $intro = $rowAboutUs['about_us'];
         }
     }
 ?>

@@ -35,7 +35,7 @@
             if($flag == 0){
                 header("location:../view/index.php");
             } else{
-                header('location:../admin/index.php');
+                $errorLogin['uname'] = "This user does not exist!";
             }
         } 
     }
