@@ -3,7 +3,7 @@
         <div class="grid_10">
             <div class="box round first grid">
                 <h2>Inbox</h2>
-                <div class="block">        
+                <div class="block scroll_block">        
                     <table class="data display datatable" id="example">
 					<thead>
 						<tr>
@@ -12,53 +12,28 @@
 							<th>Phone Number</th>
 							<th>Email</th>
 							<th>Message</th>
+							<th>Time</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr class="odd gradeX">
-							<td>01</td>
-							<td>tra</td>
-							<td>0859992003</td>
-							<td>tra.nh.1905@aptechlearning.edu.vn</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>02</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="odd gradeX">
-							<td>03</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>04</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-							<tr class="odd gradeX">
-							<td>05</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>06</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="odd gradeX">
-							<td>07</td>
-							<td>Internet</td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
-						<tr class="even gradeC">
-							<td>08</td>
-							<td>Explorer </td>
-							<td><a href="">Edit</a> || <a href="">Delete</a></td>
-						</tr>
+						<?php
+							$resultInbox = selectComment();
+							if($resultInbox->num_rows>0){
+								while($rowInbox = $resultInbox->fetch_assoc()){
+									echo "<tr class='odd gradeX'>
+										<td>{$rowInbox['id']}</td>
+										<td>{$rowInbox['full_name']}</td>
+										<td>{$rowInbox['phone_number']}</td>
+										<td>{$rowInbox['email']}</td>
+										<td>{$rowInbox['comment']}</td>
+										<td>{$rowInbox['create_at']}</td>
+										<td><a onclick='confirmDelete()' href='../controller/deleted.php?name='inbox'&id={$rowInbox['id']}'>Delete</a></td>
+									</tr>";
+								}
+							}
+						?>
+						<script src="../js/deleteConfirm.js"></script>
 					</tbody>
 				</table>
                </div>

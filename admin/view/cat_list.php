@@ -6,7 +6,7 @@
         <div class="grid_10">
             <div class="box round first grid">
                 <h2>Category List</h2>
-                <div class="block">        
+                <div class="block scroll_block">        
                     <table class="data display datatable" id="example">
 					<thead>
 						<tr>
@@ -23,7 +23,7 @@
 										<td>{$rowCat['id']}</td>
 										<td>{$rowCat['name']}</td>";
 									if($rowCat['deleted']==0){
-										echo"<td><a href=''>Edit</a> || <a onclick='confirmDelete()'>Delete</a></td>
+										echo"<td><a href='../view/cat_edit.php?id={$rowCat['id']}'>Edit</a> || <a onclick='confirmDelete()' href='../controller/deleted.php?name='cat'&id={$rowCat['id']}'>Delete</a></td>
 										</tr>";
 									} else{
 										echo"<td><a href=''>Restore</a></td>

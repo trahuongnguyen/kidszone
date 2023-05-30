@@ -6,7 +6,7 @@
 <div class="grid_10">
     <div class="box round first grid">
         <h2>User List</h2>
-        <div class="block">  
+        <div class="block scroll_block">  
             <table class="data display datatable" id="example">
 			<thead>
 				<tr>
@@ -33,12 +33,10 @@
 								<td>{$rowUser['address']}</td>			
 								<td>";
 							if($rowUser['deleted']==0){
-								echo"<a href=''>Edit</a> || <a onclick='confirmDelete()'>Delete</a> 
-									</td>
+								echo"0</td>
 								</tr>";
 							} else{
-								echo"<a href=''>Restore</a>
-									</td>
+								echo"1</td>
 								</tr>";
 							}
 						}

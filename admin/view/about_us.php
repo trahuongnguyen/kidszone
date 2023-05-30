@@ -4,7 +4,7 @@
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Update Social Media</h2>
-        <div class="block">               
+        <div class="block scroll_block">               
          <form method="post" action="">
             <table class="form">
                 <tr>

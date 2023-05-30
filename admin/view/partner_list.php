@@ -3,7 +3,7 @@
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Partner List</h2>
-        <div class="block">  
+        <div class="block scroll_block">  
             <table class="data display datatable" id="example">
 			<thead>
 				<tr>
@@ -14,36 +14,25 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="odd gradeX">
-					<td>1</td>
-					<td>Octopus</td>
-					<td style = "width:20%; text-align:center;"><img src="../img/logo/octopus.png" alt="" style = "width:20%; padding-top: 5px;"></td>
-					<td><a href="">Edit</a> || <a href="">Delete</a></td>
-				</tr>
-				<tr class="even gradeC">
-					<td>Internet Explorer 5.0</td>
-					<td>Win 95+</td>
-					<td class="center">5</td>
-					<td><a href="">Edit</a> || <a href="">Delete</a></td>
-				</tr>
-				<tr class="gradeA">
-					<td>Firefox 1.0</td>
-					<td>Win 98+ / OSX.2+</td>
-					<td class="center">1.7</td>
-					<td><a href="">Edit</a> || <a href="">Delete</a></td>
-				</tr>
-				<tr class="gradeX">
-					<td>Dillo 0.8</td>
-					<td>Embedded devices</td>
-					<td class="center">-</td>
-					<td><a href="">Edit</a> || <a href="">Delete</a></td>
-				</tr>
-				<tr class="gradeU">
-					<td>All others</td>
-					<td>-</td>
-					<td class="center">-</td>
-					<td><a href="">Edit</a> || <a href="">Delete</a></td>
-				</tr>
+				<?php
+					$resultPartner = selectPartner();
+					if($resultPartner->num_rows>0){
+						while($rowPartner = $resultPartner->fetch_assoc()){
+							echo "<tr class='odd gradeX'>
+								<td>{$rowPartner['id']}</td>
+								<td>{$rowPartner['name']}</td>
+								<td style = 'width:20%;'><img src='../../img/logo/{$rowPartner['image']}' alt='' style = 'width:20%; padding-top:5px;'></td>";
+							if($rowPartner['deleted']==0){
+								echo"<td><a href='../view/partner_edit.php?id={$rowPartner['id']}'>Edit</a> || <a onclick='confirmDelete()' href='../controller/deleted.php?name='partner'&id={$rowPartner['id']}'>Delete</a></td>
+								</tr>";
+							} else{
+								echo"<td><a href=''>Restore</a></td>
+								</tr>";
+							}	
+						}
+					}
+				?>
+				<script src="../js/deleteConfirm.js"></script>
 			</tbody>
 		</table>
 

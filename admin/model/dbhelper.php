@@ -57,7 +57,7 @@
     //select detail by id
     function selectDetailByid($id_input){
         $conn = connect();
-        $sql = "SELECT * FROM details where category_id = ? and deleted = 0";
+        $sql = "SELECT * FROM details where id = ? and deleted = 0";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $id);
         $id = $id_input;
@@ -110,46 +110,58 @@
     //select partner
     function selectPartner(){
         $conn = connect();
-        $sql = "SELECT * FROM partner WHERE deleted = 0";
+        $sql = "SELECT * FROM partner";
+        $result = $conn->query($sql);
+        $conn->close();
+        return $result;
+    }
+
+    //select partner by id
+    function selectPartnerByid($id_input){
+        $conn = connect();
+        $sql = "SELECT * FROM partner where id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $id = $id_input;
+        $stmt->execute();
+        $result = $stmt->get_result();
+        closeconnect($stmt, $conn);
+        return $result;
+    }
+
+    // select comment
+    function selectComment(){
+        $conn = connect();
+        $sql = "SELECT * FROM comment";
         $result = $conn->query($sql);
         $conn->close();
         return $result;
     }
 
     //update categories
-    function editCat($name_input, $id_input){
+    function editCat($name_input, $description_input, $image_input, $id_input){
         $conn = connect();
-        $sql = "UPDATE categories SET name = ?, update_at = CURRENT_TIMESTAMP WHERE id = ?";
+        $sql = "UPDATE categories SET name = ?, description = ?, image = ?, update_at = CURRENT_TIMESTAMP WHERE id = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("si", $name, $id);
+        $stmt->bind_param("sssi", $name, $description, $image, $id);
         $name = $name_input;
+        $description = $description_input;
+        $image =$image_input;
         $id = $id_input;
         $stmt->execute();
         closeconnect($stmt, $conn);
     }
 
     //update detail
-    function editDetail($name_input, $cateid_input, $id_input){
+    function editDetail($name_input, $cateid_input, $image_input, $audio_input, $id_input){
         $conn = connect();
-        $sql = "UPDATE categories_details SET name = ?, categories_id = ?, update_at = CURRENT_TIMESTAMP WHERE id = ?";
+        $sql = "UPDATE details SET name = ?, category_id = ?, image = ?, audio = ?, update_at = CURRENT_TIMESTAMP WHERE id = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("si", $name, $cateid, $id);
+        $stmt->bind_param("sissi", $name, $cateid, $image, $audio, $id);
         $name = $name_input;
         $cateid = $cateid_input;
-        $id = $id_input;
-        $stmt->execute();
-        closeconnect($stmt, $conn);
-    }
-
-    //update description
-    function editDescription($description_input, $detailId_input, $image_input, $id_input){
-        $conn = connect();
-        $sql = "UPDATE description SET description = ?, cateDetail_id = ?, image = ?, update_at = CURRENT_TIMESTAMP WHERE id = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sis", $description, $detailId, $image, $id);
-        $description = $description_input;
-        $detailId = $detailId_input;
         $image = $image_input;
+        $audio = $audio_input;
         $id = $id_input;
         $stmt->execute();
         closeconnect($stmt, $conn);
@@ -223,10 +235,67 @@
         closeconnect($stmt, $conn);
     }
 
-    //delete
+    //update partner
+    function editPartner($name_input, $image_input, $id_input){
+        $conn = connect();
+        $sql = "UPDATE details SET name = ?, image = ?, update_at = CURRENT_TIMESTAMP WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssi", $name, $image, $id);
+        $name = $name_input;
+        $image = $image_input;
+        $id = $id_input;
+        $stmt->execute();
+        closeconnect($stmt, $conn);
+    }
+
+    //delete user
     function deleteUser($id_input){
         $conn = connect();
         $sql = "UPDATE users SET update_at = CURRENT_TIMESTAMP, deleted = 1 WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $id = $id_input;
+        $stmt->execute();
+        closeconnect($stmt, $conn);
+    }
+
+    //delete category
+    function deleteCat($id_input){
+        $conn = connect();
+        $sql = "UPDATE categories SET update_at = CURRENT_TIMESTAMP, deleted = 1 WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $id = $id_input;
+        $stmt->execute();
+        closeconnect($stmt, $conn);
+    }
+
+    //delete detail
+    function deleteDetail($id_input){
+        $conn = connect();
+        $sql = "UPDATE details SET update_at = CURRENT_TIMESTAMP, deleted = 1 WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $id = $id_input;
+        $stmt->execute();
+        closeconnect($stmt, $conn);
+    }
+
+    //delete partner
+    function deletePartner($id_input){
+        $conn = connect();
+        $sql = "UPDATE partner SET update_at = CURRENT_TIMESTAMP, deleted = 1 WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $id = $id_input;
+        $stmt->execute();
+        closeconnect($stmt, $conn);
+    }
+
+    //delete inbox
+    function deleteComment($id_input){
+        $conn = connect();
+        $sql = "DELETE FROM comment WHERE id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $id);
         $id = $id_input;
@@ -273,6 +342,18 @@
         closeconnect($stmt, $conn);
     }
 
+    //add partner
+    function addPartner($name_input, $image_input){
+        $conn = connect();
+        $sql = "INSERT INTO partner(name, image) VALUES(?,?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ss",$name, $image);
+        $name = $name_input;
+        $image = $image_input;
+        $stmt->execute();
+        closeconnect($stmt, $conn);
+    }
+
     // check admin
     function check_admin(){     
         $conn = connect();
@@ -281,18 +362,5 @@
         return $result;
         $conn->close();
     }
-
-    //check user by name
-    // function checkByName($name_input){     
-    //     $conn = connect();
-    //     $sql = "SELECT * FROM users WHERE username = ? and deleted = 0";
-    //     $stmt = $conn->prepare($sql);
-    //     $stmt->bind_param("s", $name);
-    //     $name = $name_input;
-    //     $stmt->execute();
-    //     $result = $stmt->get_result();
-    //     return $result;
-    //     closeconnect($stmt, $conn);
-    // }
     session_start();
 ?>

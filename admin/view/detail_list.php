@@ -23,18 +23,20 @@
 						while($rowDetail = $resultDetail->fetch_assoc()){
 							$resultCatByID = selectCatByid($rowDetail['category_id']);
 							$nameCat = $resultCatByID->fetch_assoc();
+							$audioId = $rowDetail['id']-1;
 							echo "<tr class='odd gradeX'>
 								<td>{$rowDetail['name']}</td>
 								<td>{$nameCat['name']}</td>
-								<td style='width:20%; text-align:center;'><img src='../../img/{$rowDetail['image']}' alt='' style='width:20%;'></td>
+								<td style='width:20%;'><img src='../../img/{$rowDetail['image']}' alt='' style='width:20%;'></td>
 								<td class='center' style='width:30%; height:auto; padding-top: 10px;'>
-									<audio controls>
-										<source src='../voice/{$rowDetail['audio']}' type='audio/mpeg'>
+									<audio controls class='myaudio' onclick='playAudio({$audioId})'>
+										<source src='../../voice/{$rowDetail['audio']}' type='audio/mpeg'>
 										Your browser does not support the audio element.
 									</audio>
 								</td>";
 							if($rowDetail['deleted']==0){
-								echo"<td><a href=''>Edit</a> || <a onclick='confirmDelete()'>Delete</a></td>
+								echo"<td>
+								<a href='../view/detail_edit.php?id={$rowDetail['id']}'>Edit</a> || <a onclick='confirmDelete()' href='../controller/deleted.php?name='detail'&id={$rowDetail['id']}'>Delete</a></td>
 								</tr>";
 							} else{
 								echo"<td><a href=''>Restore</a></td>
@@ -44,6 +46,7 @@
 					}
 				?>
 				<script src="../js/deleteConfirm.js"></script>
+				<script src="../../js/detail.js"></script>
 			</tbody>
 		</table>
 

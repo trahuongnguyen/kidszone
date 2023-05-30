@@ -1,5 +1,8 @@
 <?php
     include('../model/dbhelper.php');
+    if(!isset($_SESSION['user'])){
+        header('Location: ../view/login.php');
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,7 +34,7 @@
                     </div>
                     <div class="floatleft marginleft10">
                         <ul class="inline-ul floatleft">
-                            <li>Hello Admin</li>
+                            <li>Hello <?php echo $_SESSION['user'][0]?></li>
                             <li><a href="../view/login.php">Logout</a></li>
                         </ul>
                     </div>
