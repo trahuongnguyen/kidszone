@@ -31,14 +31,8 @@
 								<td>{$rowUser['password']}</td>
 								<td>{$rowUser['email']}</td>
 								<td>{$rowUser['address']}</td>			
-								<td>";
-							if($rowUser['deleted']==0){
-								echo"0</td>
-								</tr>";
-							} else{
-								echo"1</td>
-								</tr>";
-							}
+								<td>{$rowUser['deleted']}</td>
+							</tr>";
 						}
 					}
 				?>
